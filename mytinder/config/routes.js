@@ -20,7 +20,7 @@
  * http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html
  */
 
-module.exports.routes = {
+ module.exports.routes = {
 
   /***************************************************************************
   *                                                                          *
@@ -34,7 +34,18 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  'get /login': {
+   view: 'login'
+ },
+
+ 'post /login': 'AuthController.login',
+
+ '/logout': 'AuthController.logout',
+
+ 'get /signup': {
+  view: 'signup'
+}
 
   /***************************************************************************
   *                                                                          *
