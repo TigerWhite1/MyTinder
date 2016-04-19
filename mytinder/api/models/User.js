@@ -8,13 +8,10 @@
  module.exports = {
 
  	attributes: {
- 		firstName: 'STRING',
- 		lastName: 'STRING',
- 		age: { type: 'INTEGER', max: 150,required: true},
- 		birthDate: 'DATE',
- 		phoneNumber: {type: 'STRING'},
- 		emailAddress: {type: 'email', unique: true, required: true},
- 		pseudo: {type: 'STRING', maxLength: 20, minLength: 5 },
+ 		age: { type: 'STRING', max: 100,required: true},
+ 		email: {type: 'email', unique: true, required: true},
+ 		pseudo: {type: 'STRING', maxLength: 20, minLength: 5,required: true},
+ 		sexe: { type: 'STRING', max: 3,required: true},
  		password: {
  			type: 'string',
  			minLength: 6,
