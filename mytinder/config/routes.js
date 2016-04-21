@@ -38,6 +38,11 @@
   'get /login': {
    view: 'login'
  },
+   'get /myprofil': {
+   view: 'myprofil'
+ },
+
+ 'post /myprofil': 'UserprofilController.myprofil',
 
  'post /login': 'AuthController.login',
 
