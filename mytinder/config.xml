@@ -9,16 +9,23 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="*" launch-external="yes"/>
+  <feature name="Toast">
+    <param name="android-package" value="nl.xservices.plugins.Toast"/>
+  </feature>
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <allow-navigation href="*"/>
   <preference name="webviewbounce" value="false"/>
+  <preference name="AndroidPersistentFileLocation" value="Compatibility"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
+  <preference name="orientation" value="portrait"/>
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>

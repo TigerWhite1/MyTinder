@@ -1,15 +1,22 @@
-<ion-modal-view>
-<ion-header-bar>
-<h1 class="title">Register</h1>
-<div class="buttons">
-	<button class="button button-clear" ng-click="closeLogin()">Close</button>
-</div>
-</ion-header-bar>
-<ion-content>
-<form ng-submit="register(sexe)">
+<ion-view view-title="Playlists">
+<ion-content ng-controller="MyprofilCtrl">
+
+<form id="test" ng-submit="register(sexe)">
+
+	<button class="button button-full button-positive" ng-click="getImageSaveContact()">
+		Get Image and Save a Contact with It
+	</button>
+	<img ng-src="{{img}}" style="width:100%; height: 200px;"/>
+
+	<div class="list">
+		<label class="item item-input"> -->
+<!-- 			<span class="input-label">My picture</span> 
+ -->			<button class="button" ng-click="upload()">Upload From Assets</button> 
+		</label>
+	</div> 
 	<div class="list">
 		<label class="item item-input">
-			<span class="input-label">Email</span>
+			<span class="input-label">My description</span>
 			<input type="text" ng-model="loginData.email">
 		</label>
 	</div>
@@ -29,18 +36,6 @@
 		</label>
 	</div>
 	<div class="list">
-		<label class="item item-input item-select">
-			<div class="input-label">
-				Sexe :
-			</div>
-			<select ng-model="sexe" ng-change="showSelectValue(mode)">
-				<option selected value="1">Mal</option>
-				<option value="2">femel</option>
-				<option value="3">Autre</option>
-			</select>
-		</label>
-	</div>
-	<div class="list">
 		<label class="item item-input">
 			<span class="input-label">Password</span>
 			<input type="password" ng-model="loginData.password">
@@ -55,5 +50,7 @@
 	</div>
 	<button class="button button-block button-calm" type="submit">Envoyer</button>
 </form>
+<!-- </ion-item> -->
+<!-- </ion-list> -->
 </ion-content>
-</ion-modal-view>
+</ion-view>

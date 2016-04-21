@@ -1,18 +1,32 @@
-angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.tinderCards2'])
+angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.tinderCards2', 'ngCordova'])
 
-
-.directive('noScroll', function($document) {
-
-  return {
-    restrict: 'A',
-    link: function($scope, $element, $attr) {
-
-      $document.on('touchmove', function(e) {
-        e.preventDefault();
-      });
-    }
+.run( function( $ionicPlatform ) {
+  $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+  if(window.cordova && window.cordova.plugins.Keyboard) {
+    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
   }
+  if(window.StatusBar) {
+    StatusBar.styleDefault();
+  }
+  ionic.Platform.isFullScreen = true;
+});
 })
+
+
+// .directive('noScroll', function($document) {
+
+//   return {
+//     restrict: 'A',
+//     link: function($scope, $element, $attr) {
+
+//       $document.on('touchmove', function(e) {
+//         e.preventDefault();
+//       });
+//     }
+//   }
+// })
 .directive('input', function($timeout) {
   return {
     restrict: 'E',
@@ -139,7 +153,7 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.tinderCards2']
       success: function(data) {
         console.log(data)
       }
-     })
+    })
 
 
   } else {
@@ -212,13 +226,13 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.tinderCards2']
   $scope.hideTime = true;
 
   var alternate,
-    isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+  isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
   $scope.sendMessage = function() {
     alternate = !alternate;
     console.log($scope.data.message)
     var d = new Date();
-  d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+    d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
 
     $scope.messages.push({
       userId: alternate ? '12345' : '54321',
@@ -256,7 +270,44 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.tinderCards2']
 
 })
 
-.controller('MyprofilCtrl', function($scope, $timeout) {
+.controller('MyprofilCtrl', function($scope, $timeout, $cordovaFileTransfer, $cordovaImagePicker, $ionicScrollDelegate, $cordovaFile) {
+
+  $scope.getImageSaveContact = function() {       
+
+    var options = {
+      maximumImagesCount: 1,
+      width: 800,
+      height: 800,
+      quality: 80
+    };
+
+    $cordovaImagePicker.getPictures(options).then(function (results) {
+
+
+      window.plugins.Base64.encodeFile(results[0], function(base64){
+        $.ajax({
+          url: 'http://10.100.254.186:1337/myprofil/create',
+          crossDomain: true,
+          type: 'post',
+          dataType: 'json',
+          data: 
+          {
+            image: base64
+          },
+          success: function(data) {
+            alert(data)
+          }
+        })
+
+        alert(base64);
+      });
+
+
+
+    }, function(error) {
+      alert('Error: ' + JSON.stringify(error));
+    });
+  };
 
 
 });
