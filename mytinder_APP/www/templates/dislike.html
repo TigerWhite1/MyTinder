@@ -1,0 +1,13 @@
+<ion-view view-title="Dislike">
+<ion-content ng-controller="DislikeCtrl">
+<div class="list">
+  <a ng-repeat="item in dislike" class="item item-thumbnail-left">
+  <img ng-src="{{ item.image }}">
+  <h2>{{ item.pseudo }}</h2>
+  <h2>{{ item.age }} ans</h2>
+  <h4>{{ item.description }}</h4>
+</a>
+
+</div>
+</ion-content>
+</ion-modal-view>

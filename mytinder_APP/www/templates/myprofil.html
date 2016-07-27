@@ -1,0 +1,25 @@
+<ion-view view-title="My profil">
+<ion-content padding="10" ng-controller="MyprofilCtrl">
+
+<form id="test">
+
+	<button class="button button-full button-calm" ng-click="getImageSaveContact()">
+		Votre image de profil
+	</button>
+	<img ng-src="{{img}}" style="width:100%; height: 200px;"/>
+	<div class="list">
+		<ion-item>
+		<ion-label>Description</ion-label>
+		<textarea style="width:100%; height: 200px;"  ng-model="loginData.descriptions" placeholder="Description"></textarea>
+	</ion-item>
+</div>
+<div class="list">
+	<label class="item item-input">
+		<span class="input-label">Pseudo</span>
+		<input type="text" ng-model="loginData.pseudo">
+	</label>
+</div>
+<button class="button button-block button-calm" ng-click="myprofil(sexe)" type="submit">Envoyer</button>
+</form>
+</ion-content>
+</ion-view>
